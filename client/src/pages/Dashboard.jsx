@@ -435,35 +435,31 @@ function Dashboard() {
   // LOADING
   // =========================
 
-  if (loading) {
+  if (loading && semesters.length === 0) {
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#f5f5f5",
+      }}
+    >
+      <div className="spinner"></div>
 
-    return (
-
-      <div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "20px",
-  }}
->
-
-  <div
-    style={{
-      width: "70px",
-      height: "70px",
-      border: "8px solid #1e293b",
-      borderTop: "8px solid #00ff88",
-      borderRadius: "50%",
-      animation: "spin 1s linear infinite",
-    }}
-  />
-
-  <h1>Loading Dashboard...</h1>
-
-</div>
-    );
-  }
+      <h2
+        style={{
+          marginTop: "20px",
+          color: "#111827",
+        }}
+      >
+        Loading Dashboard...
+      </h2>
+    </div>
+  );
+}
   const tableHeader = {
   padding: "15px",
   textAlign: "left",
