@@ -14,7 +14,7 @@ function Login() {
   useEffect(() => {
 
     const user = JSON.parse(
-      sessionStorage.getItem("user")
+      localStorage.getItem("user")
     );
 
     if (user?.token) {
@@ -51,10 +51,10 @@ function Login() {
         formData
       );
 
-      sessionStorage.setItem(
-        "user",
-        JSON.stringify(res.data)
-      );
+      localStorage.setItem(
+  "user",
+  JSON.stringify(res.data)
+);
 
       toast.success(
         "Login successful 🎉"

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://smart-cgpa-tracker.onrender.com/api",
+  baseURL:
+    "https://smart-cgpa-tracker.onrender.com/api",
 });
 
 API.interceptors.request.use(

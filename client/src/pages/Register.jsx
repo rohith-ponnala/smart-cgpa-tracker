@@ -42,10 +42,10 @@ function Register() {
         formData
       );
 
-      sessionStorage.setItem(
-        "user",
-        JSON.stringify(res.data)
-      );
+      localStorage.setItem(
+  "user",
+  JSON.stringify(res.data)
+);
 
       toast.success(
         "Registration successful 🎉"
