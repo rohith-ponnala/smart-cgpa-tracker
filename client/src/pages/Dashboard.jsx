@@ -96,38 +96,37 @@ function Dashboard() {
 
   const addSemester = async () => {
 
-    if (!semesterNumber) {
+  if (!semesterNumber) {
 
-      return toast.error(
-        "Enter semester number"
-      );
-    }
+    return toast.error(
+      "Please enter semester number"
+    );
+  }
 
-    try {
+  try {
 
-      await API.post("/semesters", {
-        semesterNumber,
-      });
+    await API.post("/semesters", {
+      semesterNumber,
+    });
 
-      toast.success(
-        "Semester Added"
-      );
+    toast.success(
+      "Semester added successfully 🎉"
+    );
 
-      setSemesterNumber("");
+    setSemesterNumber("");
 
-      fetchSemesters();
+    fetchSemesters();
 
-    } catch (error) {
+  } catch (error) {
 
-      console.log(error);
+    console.log(error);
 
-      toast.error(
-        error.response?.data?.message ||
-        "Failed to add semester"
-      );
-    }
-  };
-
+    toast.error(
+      error.response?.data?.message ||
+      "Failed to add semester"
+    );
+  }
+};
   // =========================
   // LOGOUT
   // =========================
@@ -691,82 +690,140 @@ const tableCell = {
 
       </div>
 
-      {/* SEARCH FILTER */}
+      {/* ADD SEMESTER + SEARCH FILTER */}
 
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          marginBottom: "30px",
-          flexWrap: "wrap",
-        }}
-      >
+<div
+  style={{
+    backgroundColor: "#071739",
+    padding: "25px",
+    borderRadius: "20px",
+    marginBottom: "30px",
+  }}
+>
 
-        <input
-          type="text"
-          placeholder="Search subject..."
-          value={searchTerm}
-          onChange={(e) =>
-            setSearchTerm(
-              e.target.value
-            )
-          }
-          style={{
-            flex: 1,
-            padding: "15px",
-            borderRadius:
-              "12px",
-            border: "none",
-            backgroundColor:
-              "#1e293b",
-            color: "white",
-            fontSize: "16px",
-          }}
-        />
+  <h2
+    style={{
+      color: "white",
+      marginBottom: "20px",
+    }}
+  >
+    Add New Semester
+  </h2>
 
-        <select
-          value={selectedSemester}
-          onChange={(e) =>
-            setSelectedSemester(
-              e.target.value
-            )
-          }
-          style={{
-            padding: "15px",
-            borderRadius:
-              "12px",
-            border: "none",
-            backgroundColor:
-              "#1e293b",
-            color: "white",
-            fontSize: "16px",
-          }}
+  <div
+    style={{
+      display: "flex",
+      gap: "15px",
+      flexWrap: "wrap",
+      marginBottom: "25px",
+    }}
+  >
+
+    <input
+      type="number"
+      placeholder="Enter Semester Number"
+      value={semesterNumber}
+      onChange={(e) =>
+        setSemesterNumber(e.target.value)
+      }
+      style={{
+        flex: 1,
+        padding: "15px",
+        borderRadius: "12px",
+        border: "none",
+        backgroundColor: "#1e293b",
+        color: "white",
+        fontSize: "16px",
+      }}
+    />
+
+    <button
+      onClick={addSemester}
+      style={{
+        backgroundColor: "#00ff88",
+        color: "black",
+        border: "none",
+        padding: "15px 25px",
+        borderRadius: "12px",
+        cursor: "pointer",
+        fontWeight: "bold",
+        fontSize: "16px",
+      }}
+    >
+      + Add Semester
+    </button>
+
+  </div>
+
+  {/* SEARCH FILTER */}
+
+  <div
+    style={{
+      display: "flex",
+      gap: "20px",
+      flexWrap: "wrap",
+    }}
+  >
+
+    <input
+      type="text"
+      placeholder="Search subject..."
+      value={searchTerm}
+      onChange={(e) =>
+        setSearchTerm(
+          e.target.value
+        )
+      }
+      style={{
+        flex: 1,
+        padding: "15px",
+        borderRadius: "12px",
+        border: "none",
+        backgroundColor:
+          "#1e293b",
+        color: "white",
+        fontSize: "16px",
+      }}
+    />
+
+    <select
+      value={selectedSemester}
+      onChange={(e) =>
+        setSelectedSemester(
+          e.target.value
+        )
+      }
+      style={{
+        padding: "15px",
+        borderRadius: "12px",
+        border: "none",
+        backgroundColor:
+          "#1e293b",
+        color: "white",
+        fontSize: "16px",
+      }}
+    >
+
+      <option value="All">
+        All Semesters
+      </option>
+
+      {semesters.map((sem) => (
+
+        <option
+          key={sem._id}
+          value={sem.semesterNumber}
         >
+          Semester {sem.semesterNumber}
+        </option>
 
-          <option value="All">
-            All Semesters
-          </option>
+      ))}
 
-          {semesters.map(
-            (sem) => (
+    </select>
 
-              <option
-                key={sem._id}
-                value={
-                  sem.semesterNumber
-                }
-              >
-                Semester{" "}
-                {
-                  sem.semesterNumber
-                }
-              </option>
-            )
-          )}
+  </div>
 
-        </select>
-
-      </div>
+</div>
 
       {/* CGPA CARD */}
 
