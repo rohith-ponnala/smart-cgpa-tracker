@@ -8,11 +8,10 @@ API.interceptors.request.use(
   (req) => {
 
     const user = JSON.parse(
-      sessionStorage.getItem("user")
+      localStorage.getItem("user")
     );
 
     if (user?.token) {
-
       req.headers.Authorization =
         `Bearer ${user.token}`;
     }
