@@ -3,10 +3,14 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
 
   const user = JSON.parse(
-    localStorage.getItem("user")
+    sessionStorage.getItem("user")
   );
 
-  if (!user?.token) {
+  const token =
+    sessionStorage.getItem("token");
+
+  if (!user || !token) {
+
     return <Navigate to="/login" />;
   }
 

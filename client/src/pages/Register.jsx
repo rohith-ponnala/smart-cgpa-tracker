@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   useNavigate,
   Link,
@@ -23,6 +24,7 @@ function Register() {
     useState(false);
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -40,13 +42,13 @@ function Register() {
         formData
       );
 
-      localStorage.setItem(
+      sessionStorage.setItem(
         "user",
         JSON.stringify(res.data)
       );
 
       toast.success(
-        "Registration successful"
+        "Registration successful 🎉"
       );
 
       navigate("/dashboard");
@@ -56,6 +58,7 @@ function Register() {
       console.log(error);
 
       toast.error(
+        error.response?.data?.message ||
         "Registration failed"
       );
 

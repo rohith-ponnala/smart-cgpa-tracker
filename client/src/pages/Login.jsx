@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import {
   useNavigate,
@@ -11,17 +10,18 @@ import API from "../services/api";
 function Login() {
 
   const navigate = useNavigate();
+
   useEffect(() => {
 
-  const user = JSON.parse(
-    localStorage.getItem("user")
-  );
+    const user = JSON.parse(
+      sessionStorage.getItem("user")
+    );
 
-  if (user?.token) {
-    navigate("/dashboard");
-  }
+    if (user?.token) {
+      navigate("/dashboard");
+    }
 
-}, []);
+  }, []);
 
   const [formData, setFormData] =
     useState({
@@ -33,6 +33,7 @@ function Login() {
     useState(false);
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -50,27 +51,27 @@ function Login() {
         formData
       );
 
-      localStorage.setItem(
+      sessionStorage.setItem(
         "user",
         JSON.stringify(res.data)
       );
 
       toast.success(
-        "Login successful"
+        "Login successful 🎉"
       );
 
       navigate("/dashboard");
 
     } catch (error) {
 
-  console.log(error);
+      console.log(error);
 
-  toast.error(
-    error.response?.data?.message ||
-    "Something went wrong"
-  );
+      toast.error(
+        error.response?.data?.message ||
+        "Something went wrong"
+      );
 
-}finally {
+    } finally {
 
       setLoading(false);
     }
