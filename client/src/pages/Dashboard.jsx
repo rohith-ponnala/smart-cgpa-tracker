@@ -473,32 +473,32 @@ const tableCell = {
   return (
 
     <div
-      style={{
-        backgroundColor:
-          "#020617",
-        minHeight: "100vh",
-        padding: "30px",
-      }}
-    >
+  style={{
+    backgroundColor: "#020617",
+    minHeight: "100vh",
+    padding: "15px",
+    width: "100%",
+    overflowX: "hidden",
+  }}
+>
 
       {/* TOP BAR */}
 
       <div
         style={{
-          display: "flex",
-          justifyContent:
-            "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "20px",
-          marginBottom: "30px",
-        }}
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexWrap: "wrap",
+  gap: "15px",
+  marginBottom: "30px",
+}}
       >
 
         <h1
           style={{
             color: "white",
-            fontSize: "42px",
+            fontSize: "clamp(28px, 5vw, 42px)",
           }}
         >
           Smart CGPA Tracker
@@ -507,19 +507,17 @@ const tableCell = {
         <button
            onClick={handleLogout}
           style={{
-            backgroundColor:
-              "red",
-            color: "white",
-            border: "none",
-            padding:
-              "12px 20px",
-            borderRadius:
-              "10px",
-            cursor: "pointer",
-            fontWeight:
-              "bold",
-            fontSize: "16px",
-          }}
+  backgroundColor: "red",
+  color: "white",
+  border: "none",
+  padding: "12px 18px",
+  borderRadius: "10px",
+  cursor: "pointer",
+  fontWeight: "bold",
+  fontSize: "15px",
+  width: "100%",
+  maxWidth: "150px",
+}}
         >
           Logout
         </button>
@@ -527,19 +525,17 @@ const tableCell = {
         <button
           onClick={downloadPDF}
           style={{
-            backgroundColor:
-              "#2563eb",
-            color: "white",
-            border: "none",
-            padding:
-              "14px 20px",
-            borderRadius:
-              "10px",
-            cursor: "pointer",
-            fontWeight:
-              "bold",
-            fontSize: "16px",
-          }}
+  backgroundColor: "#2563eb",
+  color: "white",
+  border: "none",
+  padding: "12px 18px",
+  borderRadius: "10px",
+  cursor: "pointer",
+  fontWeight: "bold",
+  fontSize: "15px",
+  width: "100%",
+  maxWidth: "250px",
+}}
         >
           Download PDF Report
         </button>
@@ -1034,8 +1030,7 @@ const tableCell = {
   style={{
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit, minmax(450px,1fr))",
-    gap: "30px",
+  "repeat(auto-fit, minmax(280px,1fr))",
     marginBottom: "30px",
   }}
 >
@@ -1062,7 +1057,7 @@ const tableCell = {
     <div
       style={{
         width: "100%",
-        height: "350px",
+        height: "300px",
       }}
     >
 
@@ -1130,7 +1125,7 @@ const tableCell = {
     <div
       style={{
         width: "100%",
-        height: "350px",
+        height: "300px",
       }}
     >
 
@@ -1175,8 +1170,7 @@ const tableCell = {
         style={{
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit, minmax(500px, 1fr))",
-          gap: "30px",
+  "repeat(auto-fit, minmax(300px, 1fr))",
         }}
       >
 
